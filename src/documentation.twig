@@ -1,0 +1,569 @@
+{% set documentation = [
+    {
+        'name': 'Sun',
+        'icon': 'icons/blender-icons/light_sun.svg',
+        'parameters': [
+            {
+                'name': 'Rotation',
+                'excerpt': 'Horizontal and vertical movement of the sun.',
+                'description': 'Allow to position sun in specific position creating feeling that it is a morning, midday or an evening.',
+                'video': {
+                    'src':'../img/documentation/rotation.mp4',
+                    'alt':'' 
+                }
+            },
+            {
+                'name': 'Sun disk',
+                'excerpt': 'Choose to see a physical sun disk in the sky.',
+                'description': 'Disk can be removed in a specific edge cases when sun disk in renders appears too bright.',
+                'image': {
+                    'src':'../img/documentation/sun-disk.jpg',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Sun lamp',
+                'excerpt': 'Choose to use a sun lamp or sun disk in the world for illumination.',
+                'description': 'Enabling this will ensure that there are sun shadows present in Eevee, as well as potentially help Cycles render quicker by requiring slightly fewer samples. Disabling this will mostly benefit Cycles renders, where the result will be more accurate with better matching reflections.',
+                'image': {
+                    'src':'../img/documentation/sun-lamp.jpg',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Angular diameter',
+                'excerpt': 'The size of the sun disk.',
+                'description': 'Affects shadow and lighting softness and the visual appearance of the sun disk. ',
+                'video': {
+                    'src':'../img/documentation/angular_diameter.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Temperature K',
+                'excerpt': 'Physical temperature (in Kelvins) of the sun changes the color of the sun disk.',
+                'description': 'The bigger the value, the bluer the sun.',
+                'video': {
+                    'src':'../img/documentation/temperaturek.mp4',
+                    'alt':''
+                },
+                'image_post': {
+                    'src':'../img/documentation/temperature_kelvins.png',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Intensity',
+                'excerpt': 'Intensity of the binary sun emission.',
+                'description': 'Higher intensity makes the sun brighter, thus illuminating the scene more.',
+                'video': {
+                    'src':'../img/documentation/intensity_256x128.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Binary sun',
+                'excerpt': 'Enables a second sun that is bound to the main sun.',
+                'description': 'In a binary star system, there are two stars that orbit around a common center of mass.',
+                'image': {
+                    'src':'../img/documentation/binary-sun.jpg',
+                    'alt':''
+                }
+            },
+        ]
+    },
+    {
+        'name': 'Binary Sun',
+        'icon': 'icons/blender-icons/light_sun.svg',
+        'parameters': [
+            {
+                'name': 'Distance',
+                'excerpt': 'Distance from the main sun.',
+                'description': 'More accurately the distance between the primary and binary sun.',
+                'video': {
+                    'src':'../img/documentation/bi_sun_distance.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Phase',
+                'excerpt': 'The angle at which the binary sun is placed relative to the main sun.',
+                'description': 'The phase angle is the angle formed between the two suns relative to the observer.',
+                'video': {
+                    'src':'../img/documentation/bi_sun_phase.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Angular diameter',
+                'excerpt': 'The size of the binary sun disc.',
+                'description': 'The angular diameter is the angle formed between two imaginary lines that extend from the observer\'s eye to opposite edges of the binary sun disc. Larger the angular diameter, less bright the sun disc will appear, and softer the shadows will form.',
+                'video': {
+                    'src':'../img/documentation/bi_sun_angular_diameter.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Temperature K',
+                'excerpt': 'Physical temperature (in Kelvins) of the binary sun changes the color of the binary sun disk.',
+                'description': 'The bigger the value, the bluer the sun.',
+                'video': {
+                    'src':'../img/documentation/bi_sun_temperaturek.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Intensity',
+                'excerpt': 'Intensity of the binary sun emission.',
+                'description': 'Changes the binary sun radiance intensity in Watt·sr/m2.',
+                'video': {
+                    'src':'../img/documentation/bi_sun_intensity.mov',
+                    'alt':''
+                }
+            },
+        ]
+    },
+    {
+        'name': 'Atmosphere',
+        'icon': 'icons/blender-icons/world_data.svg',
+        'parameters': [
+            {
+                'name': 'Density',
+                'excerpt': 'Control how much atmosphere is present on the planet.',
+                'description': 'For example, 0 is the vacuum of the space, but 1.22 kg/m3 is the atmosphere density for the Earth.',
+                'video': {
+                    'src':'../img/documentation/density.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Scale Height',
+                'excerpt': 'Determines how high the atmosphere goes in the scene, affecting density distribution.',
+                'description': 'Mostly affects vertical transitions in the atmosphere, where lower scale heights will make effects of changing altitude appear quicker.',
+                'video': {
+                    'src':'../img/documentation/scale_height.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Intensity',
+                'excerpt': 'Artistical control that affects how bright the atmosphere appears.',
+                'description': 'Atmosphere intensity multiplier.',
+                'video': {
+                    'src':'../img/documentation/atmosphere_intensity.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Night Intensity',
+                'excerpt': 'Artistical control that affects how bright the atmosphere appears at night.',
+                'description': 'Atmosphere intensity multiplier.',
+                'video': {
+                    'src':'../img/documentation/night_intensity.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Color',
+                'excerpt': 'Artistical control that gives a tint to the atmosphere particle.',
+                'description': 'The tint or hue of the atmospheric particles, that are added to the scene, simulate the appearance of a realistic sky. This can include the color of the sky during different times of the day, such as blue during the day, orange and red during sunset, and dark blue or black during the night.',
+                'video': {
+                    'src':'../img/documentation/atmosphere_color.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Inscattering',
+                'excerpt': 'Control how much light is scattered through the particle for each wavelength (RGB).',
+                'description': 'Atmosphere scattering coefficients.',
+                'video': {
+                    'src':'../img/documentation/inscattering.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Absorption',
+                'excerpt': 'In real life situation, this should be an invert of inscattering value to give a physically accurate appearance.',
+                'description': 'This control is exposed to give more artistic freedom.',
+                'video': {
+                    'src':'../img/documentation/absorption.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Mie Scattering Intensity',
+                'excerpt': 'Aura around the sun.',
+                'description': 'Light scattering around the sun in the lower atmospheric layer.',
+                'video': {
+                    'src':'../img/documentation/mie_intensity.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Mie Scattering Anisotropy',
+                'excerpt': 'How concentrated is the light scattering around the sun.',
+                'description': 'It refers to the concentration of scattered light around the sun as viewed from a particular point in space. Mie scattering is a type of scattering that occurs when light interacts with particles that are of a larger size than the wavelength of the light.',
+                'video': {
+                    'src':'../img/documentation/atmosphere_mie_scattering_anisotropy.mov',
+                    'alt':''
+                }
+            },
+           
+        ]
+    },
+    {
+        'name': 'Stars',
+        'icon': 'icons/blender-icons/sticky_uvs_disable.svg',
+        'parameters': [
+            {
+                'name': 'Type',
+                'excerpt': 'Use procedurally generated stars or image texture for the stars.',
+                'description': 'Procedurally stars are generated using noise texture. When using image texture it is applied using equirectangular projection.',
+                'video': {
+                    'src':'',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Radiance Intensity',
+                'excerpt': 'Artistic control that affects how bright the stars are.',
+                'description': 'Radiance intensity refers to the brightness of stars and can be adjusted for artistic effect or to simulate the actual brightness of stars in the night sky, allowing for the creation of different moods or atmospheres in a star field scene.',
+                'video': {
+                    'src':'../img/documentation/stars_rintensity.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Radiance Gamma',
+                'excerpt': 'How dense stars appear in the sky.',
+                'description': 'Changes star brightness distribution curve.',
+                'video': {
+                    'src':'../img/documentation/stars_gamma.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Amount',
+                'excerpt': 'Magnitude of stars in the night sky.',
+                'description': 'Magnitude measures celestial object brightness, affected by luminosity, distance from Earth, and atmospheric absorption. Adjusting star objects brightness in PSA can simulate the night sky and represent relative brightness. How big of a % of the scene is filled with stars.',
+                'video': {
+                    'src':'../img/documentation/stars_amount.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Scale',
+                'excerpt': 'Global scale of the star texture.',
+                'description': 'The bigger the scale the smaller the stars and more clustered together they appear. If the stars are too large or too sparse, or if they are too small or too dense, the scene may look unrealistic or cluttered.',
+                'video': {
+                    'src':'',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Seed',
+                'excerpt': 'Randomly redistributed star texture for different star configurations/placement.',
+                'description': 'Different seed values can generate a new star texture with unique configurations and placements, where the seed value determines the starting point of randomization. In PSA, this technique allows for creating diverse star configurations and placements with the same texture and settings.',
+                'video': {
+                    'src':'../img/documentation/stars_seed.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Temperature',
+                'excerpt': 'How hot or bright the stars appear.',
+                'description': 'Black body temperature is measured in kelvins. A "black body" absorbs all electromagnetic radiation, appearing black. They aid in understanding radiation and are used to measure temperature and energy standards in physics',
+                'video': {
+                    'src':'../img/documentation/stars_temperature.mov',
+                    'alt':''
+                }
+            },
+        ]
+    },
+    {
+        'name': 'Clouds',
+        'icon': 'icons/blender-icons/mod_fluid.svg',
+        'parameters': [
+            {
+                'name': 'Type',
+                'excerpt': 'Use procedurally generated clouds or image texture for the clouds.',
+                'description': 'Clouds with PSA can be created using either procedurally generated algorithms or image texture-based methods. Procedural clouds offer greater control over the appearance and are quick to render, while image texture-based clouds can achieve a specific look or style but are limited by the chosen image or texture.',
+                'video': {
+                    'src':'',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Seed',
+                'excerpt': 'Randomly generated codes for different cloud configurations/placement.',
+                'description': 'Procedural cloud generation uses algorithms that determine the cloud\'s shape, size, and density, but the same set of parameters will always produce the same cloud formation due to determinism. Use seed to create different variations.',
+                'video': {
+                    'src':'../img/documentation/cloud_seed.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Scale',
+                'excerpt': 'Changes scale of the cloud noise texture.',
+                'description': 'Changes the scale of the cloud texture',
+                'video': {
+                    'src':'../img/documentation/cloud_scale.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Thickness',
+                'excerpt': 'Control how opaque clouds appear overall.',
+                'description': 'Adjusting the thickness parameter can affect the appearance of clouds, making them more or less opaque by controlling how much light passes through. Thicker clouds block more light, appearing more opaque, while thinner clouds appear more transparent.',
+                'video': {
+                    'src':'../img/documentation/clouds_thickness.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Detail',
+                'excerpt': 'How detailed the clouds appear.',
+                'description': 'The detail parameter adjusts the complexity of cloud texture, allowing the creation of clouds with varying levels of intricacy using noise textures. It controls the size of shapes and contrast between them.',
+                'video': {
+                    'src':'../img/documentation/clouds_detail.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Dimension',
+                'excerpt': 'How dimensional the clouds appear to be (flat to rough).',
+                'description': 'Adjust the amount of the detail level of the main texture. Smaller the dimension the more detailed the clouds will appear.',
+                'video': {
+                    'src':'../img/documentation/clouds_dimension.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Lacunarity',
+                'excerpt': 'The degree of spatial variability or patchiness of the cloud cover.',
+                'description': 'Adjust the scales of the detail texture. Increasing lacunarity will increase the detail of the smaller clouds',
+                'video': {
+                    'src':'../img/documentation/clouds_lacunarity.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Coverage',
+                'excerpt': 'Control minimum and maximum of how much clouds are covering the sky.',
+                'description': 'Adjust the coverage parameter to control the minimum and maximum coverage of clouds in the sky, allowing you to create various weather conditions and atmospheric effects, ranging from a completely clear sky to a sky that is completely covered by clouds.',
+                'video': {
+                    'src':'../img/documentation/cloud_coverage.mov',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Lighting Intensity',
+                'excerpt': 'Artistic control that allows control over how much sunlight is affecting the clouds.',
+                'description': 'Control cloud brightness and contrast, along with creating atmospheric effects using the lighting intensity parameter.',
+                'video': {
+                    'src':'../img/documentation/clouds_lighting_intensity.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Self Shadowing',
+                'excerpt': 'Control the amount of shadows forming on clouds.',
+                'description': 'The self-shadowing parameter simulates light passing through and around the clouds, adding depth and realism to the scene. Directly influences how much the shadows the cloud casts against itself are expressed.',
+                'video': {
+                    'src':'../img/documentation/cloud_self_shadow.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Directional Power',
+                'excerpt': 'How much light is concentrated around the sun.',
+                'description': 'This parameter adjusts the sun\'s effect on cloud appearance. A higher directional power focuses more light around the sun, making clouds brighter near it. Lower values distribute light more evenly across the sky for a less bright, diffuse appearance. ',
+                'video': {
+                    'src':'../img/documentation/cloud_direction.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Inscattering',
+                'excerpt': 'Control how much light is scattered through the particle for each wavelength (RGB).',
+                'description': 'Cloud scattering coefficients.',
+                'video': {
+                    'src':'../img/documentation/cloud_inscattering.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Location',
+                'excerpt': 'Cloud coordinate position offset.',
+                'description': 'The location parameter moves clouds from their default position to create dynamic formations or achieve a specific visual effect.',
+                'video': {
+                    'src':'../img/documentation/cloud_location.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Rotation',
+                'excerpt': 'Cloud coordinate rotation offset.',
+                'description': 'Rotation parameter rotates clouds around their center or pivot point. It\'s useful for creating dynamic cloud formations or visual effects.',
+                'video': {
+                    'src':'../img/documentation/cloud_rotation.mp4',
+                    'alt':''
+                }
+            },
+        ]
+    },
+    {
+        'name': 'Object Fog',
+        'icon': 'icons/blender-icons/material.svg',
+        'parameters': [
+            {
+                'name': 'Type',
+                'excerpt': 'Chose manually or automatically to apply fog material node for every material in the scene.',
+                'description': 'Manual allows to chose when fog material node is applied for materials. Auto applies fog material node whenever new material is added to an object.',
+                'image': {
+                    'src':'../img/documentation/manual-auto.jpg',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Apply / Clear',
+                'excerpt': 'Adds or removes fog material from every material in the scene.',
+                'description': 'If user has manually disconnected fog node for material or relinked it in a different way we apply custom property `psa_user_modified` to object. This prevents our script from overriding user changes.',
+                'image': {
+                    'src':'../img/documentation/safter_fog.png',
+                    'alt':''
+                }
+            },
+        ]
+    },
+    {
+        'name': 'Ground',
+        'icon': 'icons/blender-icons/view_perspective.svg',
+        'parameters': [
+            {
+                'name': 'Color',
+                'excerpt': 'Control the base color of the ground plane.',
+                'description': 'Ground color/texture parameter controls the hue, saturation, and brightness of the ground plane, affecting the overall mood, lighting, and environment of the scene.',
+                'video': {
+                    'src':'../img/documentation/ground_color.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Ground',
+                'excerpt': 'If enabled, creates an infinite ground plane. Makes the horizon visible.',
+                'description': 'Enabling this option creates a continuous ground plane, useful for outdoor scenes, landscapes, and visible horizon.',
+                'image': {
+                    'src':'',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Ground offset',
+                'excerpt': 'Move the ground plane vertically by offset.',
+                'description': 'Useful for low orbit and aerial shots.',
+                'video': {
+                    'src':'../img/documentation/ground_offset.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Horizon offset',
+                'excerpt': 'Move only horizon line up or down.',
+                'description': 'Adjusting the horizon offset can change the horizon line position, affecting the scene\'s appearance. It creates the illusion of a higher or lower viewpoint, emphasizing specific elements and producing atmospheric effects.',
+                'video': {
+                    'src':'../img/documentation/ground_horizon_offset.mov',
+                    'alt':''
+                }
+            },
+        ]
+    },
+
+     {
+        'name': 'Artistic Controls',
+        'icon': 'icons/blender-icons/shaderfx.svg',
+        'parameters': [
+            {
+                'name': 'Distance scalar',
+                'excerpt': 'Control all distance values globally.',
+                'description': 'This parameter adjusts the distance between objects in a scene, and is useful for large scenes. Decreasing it creates more distance and a spacious feel, while increasing it creates less distance and a crowded feel.',
+                'video': {
+                    'src':'../img/documentation/distance_scalar.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Falloff',
+                'excerpt': 'Control how fast the atmospheric mist changes density.',
+                'description': 'Atmospheric fog distance falloff curve.',
+                'video': {
+                    'src':'../img/documentation/falloff.mp4',
+                    'alt':''
+                }
+            },
+            {
+                'name': 'Sun radiance gamma',
+                'excerpt': 'Control how intense Sun color appears.',
+                'description': 'Sun color gamma curve.',
+                'video': {
+                    'src':'../img/documentation/sun_radiance_gamma.mp4',
+                    'alt':''
+                }
+            },
+        ]
+     }
+   
+]%}
+
+!!! tip ""
+    Hey :wave:, first time here? You can find the installation guide and first run in the [getting started](/psa/getting-started/) section.
+
+
+Take a deep breath and have a look at the user interface. At a glance, it may look a bit complex. It is due to many tweakable parameters and fancy names like *Kelvins*, *radiance*, and *absorption* that we use to standardize variable names.
+
+
+* [Sun](#sun)
+* [Binary Sun](#binary-sun)
+* [Atmosphere](#atmosphere)
+* [Stars](#stars)
+* [Clouds](#clouds)
+* [Object fog](#object-fog)
+* [Ground](#ground)
+* [Artistic Controls](#artistic-controls)
+
+{% for section in documentation %}
+## <span class="twemoji">{% include section.icon %}</span> {{ section.name }}
+{% for parameter in section.parameters %}
+### {{ parameter.name }}
+<div class="parameter">
+    <div class="parameter__info">
+        <span>{{ parameter.excerpt }}</span>{% if parameter.description != '' %}<span style="margin-left: 4px; color: rgba(0,0,0,.5)">{{ parameter.description }}</span>{% endif %}
+    </div>
+    <div class="parameter__video">{% if parameter.video and parameter.video.src %}<video autoplay loop muted playsinline ><source src="{{parameter.video.src}}" type="video/mp4"></video>{% elseif parameter.image %}<img src="{{parameter.image.src}}" alt="{{parameter.image.alt}}" />{% endif %}</div>
+</div>
+{% if parameter.image_post %}<div class="parameter mb-64"><img src="{{parameter.image_post.src}}" alt="{{parameter.image_post.alt}}" /></div>{% endif %}
+{% endfor %}
+{% if section.post_block %}{{section.post_block}}{% endif %}
+{% endfor %}
+
+
+{# 959 #}
+{# 1219+ 328 #}
+{# 1599+ 362 #}
+{# 1999+ 396 #}
+
+{# ## Binary Sun
+{% for parameter in binary_sun_parameters %}
+### {{ parameter.name }}
+<div class="parameter">
+    <div class="parameter__info">
+        <div>{{ parameter.excerpt }}</div>{% if parameter.description != '' %}<div style="color: rgba(0,0,0,.5)">{{ parameter.description }}</div>{% endif %}
+    </div>
+    <div class="parameter__video">
+        <video autoplay loop >
+            <source src="{{parameter.image.src}}" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+{% endfor %} #}

@@ -1,0 +1,8 @@
+{% if promo %}
+<a href="#pricing" class="badge" {% if promo_background %}style="background-color:{{promo_background}}"{% endif %}>
+    <div class="badge__title">{{ promo_title }}</div>
+    <div class="badge__subtitle">{{ promo_subtitle }}</div>
+</a>
+{% endif %}
+
+{#  and "2022-12-23"|date('U') > "now"|date('U') #}
